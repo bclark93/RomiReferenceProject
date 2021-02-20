@@ -5,6 +5,7 @@
 #pragma once
 
 #include <frc/Joystick.h>
+#include <frc/XboxController.h>
 #include <frc/smartdashboard/SendableChooser.h>
 #include <frc2/command/Command.h>
 #include <frc2/command/button/Button.h>
@@ -41,7 +42,9 @@ class RobotContainer {
 
  private:
   // Assumes a gamepad plugged into channnel 0
-  frc::Joystick m_controller{0};
+  //frc::Joystick m_controller{0};
+  // Assumes an Xbox controller plugged into channel 0
+  frc::XboxController m_controller{0};
   frc::SendableChooser<frc2::Command*> m_chooser;
 
   // The robot's subsystems
@@ -49,7 +52,17 @@ class RobotContainer {
   OnBoardIO m_onboardIO{OnBoardIO::ChannelMode::INPUT,
                         OnBoardIO::ChannelMode::INPUT};
 
-  // Example button
+  // Joystick buttons
+  frc2::Button m_controllerButtonA{
+      [this] { return m_controller.GetAButtonPressed(); }};
+  frc2::Button m_controllerButtonB{
+      [this] { return m_controller.GetBButtonPressed(); }};
+  frc2::Button m_controllerButtonX{
+      [this] { return m_controller.GetXButtonPressed(); }};
+  frc2::Button m_controllerButtonY{
+      [this] { return m_controller.GetYButtonPressed(); }};
+
+  // Robot buttons
   frc2::Button m_onboardButtonA{
       [this] { return m_onboardIO.GetButtonAPressed(); }};
 

@@ -21,6 +21,11 @@ void RobotContainer::ConfigureButtonBindings() {
       &m_drive, [this] { return -m_controller.GetRawAxis(1); },
       [this] { return m_controller.GetRawAxis(2); }));
 
+  // Setup controller buttons
+  m_controllerButtonA.WhenPressed(TurnDegrees(0.5, 180_deg, &m_drive));
+  m_controllerButtonX.WhenPressed(TurnDegrees(-0.5, 90_deg, &m_drive));
+  m_controllerButtonB.WhenPressed(TurnDegrees(0.5, 90_deg, &m_drive));
+
   // Example of how to use the onboard IO
   m_onboardButtonA.WhenPressed(frc2::PrintCommand("Button A Pressed"))
       .WhenReleased(frc2::PrintCommand("Button A Released"));
