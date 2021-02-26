@@ -25,6 +25,9 @@ void RobotContainer::ConfigureButtonBindings() {
   m_controllerButtonA.WhenPressed(TurnDegrees(0.5, 180_deg, &m_drive));
   m_controllerButtonX.WhenPressed(TurnDegrees(-0.5, 90_deg, &m_drive));
   m_controllerButtonB.WhenPressed(TurnDegrees(0.5, 90_deg, &m_drive));
+  // WIP: Turn on Yellow LED when Y Button is pressed
+  //m_controllerButtonY.WhenPressed(m_onboardIO.SetYellowLed(true))
+  //    .WhenReleased(m_onboardIO.SetYellowLed(false));
 
   // Example of how to use the onboard IO
   m_onboardButtonA.WhenPressed(frc2::PrintCommand("Button A Pressed"))
